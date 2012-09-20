@@ -39,34 +39,27 @@
 {
     NSURL *url = [NSURL URLWithString:@"http://10.12.216.102:8888/api/v1/person/sign_in.json"];
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
-    NSMutableURLRequest *request = [httpClient requestWithMethod:@"POST" path:@"/myobject" parameters:nil];
+    NSMutableURLRequest *request = [httpClient requestWithMethod:@"POST" path:@"" parameters:nil];
     [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     
-//    NSMutableDictionary *requestBodyJson = [[NSMutableDictionary alloc] initWithCapacity:1];
+    // NSMutableDictionary *requestBodyJson = [[NSMutableDictionary alloc] initWithCapacity:1];
     
     NSString *requestBody = @"{\"person\":{\"email\":\"aaa@example.com\", \"password\":\"test123\"}}";
     [request setHTTPBody:[requestBody dataUsingEncoding:NSUTF8StringEncoding]];
     
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     
-    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) 
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
     {
-        NSLog(@"Method: %@, Return:%@", [operation request], responseObject);
-    } 
-    failure:^(AFHTTPRequestOperation *operation, NSError *error) 
+        NSData *data = (NSData*) responseObject;
+        NSString *token = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+        
+        NSLog(@"Method: %@\n Return:%@", [operation request], token);
+    }
+                                     failure:^(AFHTTPRequestOperation *operation, NSError *error)
     {
         
     }];
-    
-//                                         operationWithRequest:request
-//                                                                          completion:^(NSURLRequest *req, NSHTTPURLResponse *response, NSData *data, NSError *error) {
-//                                                                              BOOL HTTPStatusCodeIsAcceptable = [[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(200, 100)] containsIndex:[response statusCode]];
-//                                                                              if (HTTPStatusCodeIsAcceptable) {
-//                                                                                  NSLog(@"Request Successful");
-//                                                                              } else {
-//                                                                                  NSLog(@"[Error]: (%@ %@) %@", [request HTTPMethod], [[request URL] relativePath], error);
-//                                                                              }
-//                                                                          }];
     
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
     [queue addOperation:operation];
