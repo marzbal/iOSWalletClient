@@ -8,6 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+#import "AFNetworking.h"
+
 @interface WalleetRepository : NSObject
+
+- (void)createUserWithEmail:(NSString *)email andPassword:(NSString *)password;
+- (void)getUserForEmail:(NSString *)email andPassword:(NSString *)password;
 
 @end
