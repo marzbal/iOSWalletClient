@@ -14,5 +14,6 @@
 
 - (void)createUserWithEmail:(NSString *)email andPassword:(NSString *)password;
 - (void)getUserForEmail:(NSString *)email andPassword:(NSString *)password;
+- (void)getUserAccount;
 
 @end

@@ -41,17 +41,12 @@
          [WalleetUserData sharedInstance].userEmail = email;
          [WalleetUserData sharedInstance].userPassword = password;
          [WalleetUserData sharedInstance].userToken = token;
-         
-         NSLog(@"Token:%@", token);
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error)
      {
-         [WalleetUserData sharedInstance].userEmail = @"";
-         [WalleetUserData sharedInstance].userPassword = @"";
      }];
     
-    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-    [queue addOperation:operation];
+    [httpClient enqueueHTTPRequestOperation:operation];
 }
 
 - (void)getUserForEmail:(NSString *)email andPassword:(NSString *)password
@@ -83,17 +78,34 @@
         [WalleetUserData sharedInstance].userEmail = email;
         [WalleetUserData sharedInstance].userPassword = password;
         [WalleetUserData sharedInstance].userToken = token;
-        
-        NSLog(@"Token:%@", token);
     }
     failure:^(AFHTTPRequestOperation *operation, NSError *error)
     {
-        [WalleetUserData sharedInstance].userEmail = @"";
-        [WalleetUserData sharedInstance].userPassword = @"";
     }];
     
-    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-    [queue addOperation:operation];
+    [httpClient enqueueHTTPRequestOperation:operation];
+}
+
+- (void)getUserAccount
+{
+    NSURL *url = [NSURL URLWithString:@"http://10.12.216.102:8888/api/v1/person.json"];
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
+    NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET" path:@"" parameters:nil];
+    [request addValue:[WalleetUserData sharedInstance].userToken forHTTPHeaderField:@"X-Api-Token"];
+    [request addValue:@"iOS" forHTTPHeaderField:@"X-Api-Client"];
+    
+    AFJSONRequestOperation *operation = [[AFJSONRequestOperation alloc] initWithRequest:request];
+    
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
+     {
+         // Nothing to do
+     }
+     failure:^(AFHTTPRequestOperation *operation, NSError *error)
+     {
+         
+     }];
+    
+    [httpClient enqueueHTTPRequestOperation:operation];
 }
 
 @end
