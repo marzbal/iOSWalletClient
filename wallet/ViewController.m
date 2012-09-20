@@ -7,9 +7,10 @@
 //
 
 #import "ViewController.h"
+#import "WalleetRepository.h"
 
 @interface ViewController ()
-
+@property (nonatomic, strong) WalleetRepository *client;
 @end
 
 @implementation ViewController
@@ -19,7 +20,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    self.client = [[WalleetRepository alloc] init];
 }
 
 - (void)viewDidUnload
@@ -33,6 +34,11 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+}
+
+- (IBAction)login:(id)sender
+{
+    [self.client getUserForEmail:self.emailTextField.text andPassword:self.passwordTextField.text];
 }
 
 @end
