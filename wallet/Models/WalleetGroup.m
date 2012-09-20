@@ -10,4 +10,6 @@
 
 @implementation WalleetGroup
 
+@synthesize name, serverID;
+
 @end
