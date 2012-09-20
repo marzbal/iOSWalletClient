@@ -13,6 +13,8 @@
 @end
 
 @implementation ViewController
+@synthesize emailTextField;
+@synthesize passwordTextField;
 
 - (void)viewDidLoad
 {
@@ -22,6 +24,8 @@
 
 - (void)viewDidUnload
 {
+    [self setEmailTextField:nil];
+    [self setPasswordTextField:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
