@@ -50,7 +50,7 @@
     [httpClient enqueueHTTPRequestOperation:operation];
 }
 
-- (void)getUserForEmail:(NSString *)email andPassword:(NSString *)password
+- (void)getUserForEmail:(NSString *)email andPassword:(NSString *)password successBlock:(void(^)(void))successBlock
 {
     NSURL *url = [NSURL URLWithString:@"http://10.12.216.102:8888/api/v1/person/sign_in.json"];
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
@@ -80,7 +80,7 @@
         [WalleetUserData sharedInstance].userPassword = password;
         [WalleetUserData sharedInstance].userToken = token;
         
-        [self getGroups];
+        successBlock();
     }
     failure:^(AFHTTPRequestOperation *operation, NSError *error)
     {
@@ -111,7 +111,8 @@
     [httpClient enqueueHTTPRequestOperation:operation];
 }
 
-- (void)getGroups
+
+- (void)getGroupsWithSuccessBlock:(GroupsSuccessBlock)successBlock
 {
     NSURL *url = [NSURL URLWithString:@"http://10.12.216.102:8888/api/v1/groups.json"];
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
@@ -121,10 +122,23 @@
     
     AFJSONRequestOperation *operation = [[AFJSONRequestOperation alloc] initWithRequest:request];
     
-    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
-     {
-         NSDictionary *dictionary = (NSDictionary *)responseObject;
-        [self translateToGroupsFromResponse:dictionary];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject)
+    {
+        NSMutableArray *groupArray = [[NSMutableArray alloc] initWithCapacity:[responseObject count]];
+        
+        NSArray *itemArray = [responseObject objectForKey:@"items"];
+        
+        [itemArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop)
+         {
+             NSDictionary *walleetGroupDictionary = [obj valueForKey:@"group"];
+             WalleetGroup *group = [[WalleetGroup alloc] init];
+             group.name = [walleetGroupDictionary objectForKey:@"name"];
+             group.serverID = [[walleetGroupDictionary objectForKey:@"id"] integerValue];
+             [groupArray addObject:group];
+         }];
+        
+        NSLog(@"%@", groupArray);
+        successBlock(groupArray);
      }
       failure:^(AFHTTPRequestOperation *operation, NSError *error)
      {
@@ -136,20 +150,7 @@
 
 - (void)translateToGroupsFromResponse:(NSDictionary *)responseDictionary
 {
-    NSMutableArray *groupArray = [[NSMutableArray alloc] initWithCapacity:[responseDictionary count]];
-    
-    NSArray *itemArray = [responseDictionary objectForKey:@"items"];
-    
-    [itemArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop)
-    {
-        NSDictionary *walleetGroupDictionary = [obj valueForKey:@"group"];
-        WalleetGroup *group = [[WalleetGroup alloc] init];
-        group.name = [walleetGroupDictionary objectForKey:@"name"];
-        group.serverID = [[walleetGroupDictionary objectForKey:@"id"] integerValue];        
-        [groupArray addObject:group];
-    }];
-    
-    NSLog(@"%@", groupArray);
+
 }
 
 @end

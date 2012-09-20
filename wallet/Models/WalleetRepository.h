@@ -10,11 +10,20 @@
 
 #import "AFNetworking.h"
 
+@protocol data <NSObject>
+
+@end
+
+typedef void(^GroupsSuccessBlock)(NSArray *groups);
 @interface WalleetRepository : NSObject
 
+
 - (void)createUserWithEmail:(NSString *)email andPassword:(NSString *)password;
-- (void)getUserForEmail:(NSString *)email andPassword:(NSString *)password;
+- (void)getUserForEmail:(NSString *)email andPassword:(NSString *)password successBlock:(void(^)(void))successBlock;
 - (void)getUserAccount;
-- (void)getGroups;
+
+- (void)getGroupsWithSuccessBlock:(GroupsSuccessBlock)successBlock;
+
+@property (nonatomic, strong) NSObject<data> *delegate;
 
 @end

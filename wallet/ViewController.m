@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "WalleetRepository.h"
+#import "WaleetGroupTableViewController.h"
 
 @interface ViewController ()
 @property (nonatomic, strong) WalleetRepository *client;
@@ -31,14 +32,17 @@
     // Release any retained subviews of the main view.
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    WaleetGroupTableViewController *wgtvc = segue.destinationViewController;
+    [self.client getUserForEmail:self.emailTextField.text andPassword:self.passwordTextField.text successBlock:^{
+        wgtvc.model = self.client;
+    }];
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
-}
-
-- (IBAction)login:(id)sender
-{
-    [self.client getUserForEmail:self.emailTextField.text andPassword:self.passwordTextField.text];
 }
 
 @end

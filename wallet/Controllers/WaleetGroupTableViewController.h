@@ -12,5 +12,6 @@
 @interface WaleetGroupTableViewController : UITableViewController
 
 @property (nonatomic, strong) NSArray *groups;
+@property (nonatomic) WalleetRepository *model;
 
 @end
