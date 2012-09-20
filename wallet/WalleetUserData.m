@@ -14,4 +14,27 @@
 @synthesize userPassword = _userPassword;
 @synthesize userToken = _userToken;
 
+static WalleetUserData *sharedInstance = nil;
+
++ (WalleetUserData *)sharedInstance 
+{
+    if(sharedInstance == nil) 
+    {
+        sharedInstance = [[self alloc] init];
+    }
+    
+    return sharedInstance;
+}
+
+- (id)init
+{
+    self = [super init];
+    
+    if (self) 
+    {
+    }
+    
+    return self;
+}
+
 @end

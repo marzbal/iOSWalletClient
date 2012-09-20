@@ -14,5 +14,6 @@
 @property (nonatomic, strong) NSString *userEmail;
 @property (nonatomic, strong) NSString *userPassword;
 
++ (WalleetUserData *)sharedInstance;
 
 @end

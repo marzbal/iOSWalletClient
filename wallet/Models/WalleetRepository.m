@@ -8,6 +8,8 @@
 
 #import "WalleetRepository.h"
 
+#import "WalleetUserData.h"
+
 @implementation WalleetRepository
 
 - (void)createUserWithEmail:(NSString *)email andPassword:(NSString *)password;
@@ -42,23 +44,27 @@
     NSMutableURLRequest *request = [httpClient requestWithMethod:@"POST" path:@"" parameters:nil];
     [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     
-    // NSMutableDictionary *requestBodyJson = [[NSMutableDictionary alloc] initWithCapacity:1];
-    
     NSString *requestBody = @"{\"person\":{\"email\":\"aaa@example.com\", \"password\":\"test123\"}}";
     [request setHTTPBody:[requestBody dataUsingEncoding:NSUTF8StringEncoding]];
     
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    [WalleetUserData sharedInstance].userEmail = email;
+    [WalleetUserData sharedInstance].userPassword = password;
+    
+    AFJSONRequestOperation *operation = [[AFJSONRequestOperation alloc] initWithRequest:request];
     
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
     {
-        NSData *data = (NSData*) responseObject;
-        NSString *token = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+        NSDictionary *dictionary = (NSDictionary *)responseObject;
+        NSString *token = [dictionary objectForKey:@"api_token"];
         
-        NSLog(@"Method: %@\n Return:%@", [operation request], token);
+        [WalleetUserData sharedInstance].userToken = token;
+        
+        NSLog(@"Token:%@", token);
     }
-                                     failure:^(AFHTTPRequestOperation *operation, NSError *error)
+    failure:^(AFHTTPRequestOperation *operation, NSError *error)
     {
-        
+        [WalleetUserData sharedInstance].userEmail = @"";
+        [WalleetUserData sharedInstance].userPassword = @"";
     }];
     
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
