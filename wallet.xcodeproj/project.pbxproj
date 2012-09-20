@@ -29,6 +29,7 @@
 		454A67E3160B814700367F2B /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 454A67D8160B814700367F2B /* AFURLConnectionOperation.m */; };
 		454A67E4160B814700367F2B /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 454A67DA160B814700367F2B /* AFXMLRequestOperation.m */; };
 		454A67E5160B814700367F2B /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 454A67DC160B814700367F2B /* UIImageView+AFNetworking.m */; };
+		454A67EF160B921000367F2B /* WalleetUserData.m in Sources */ = {isa = PBXBuildFile; fileRef = 454A67EE160B921000367F2B /* WalleetUserData.m */; };
 		DF02B624160B865600284343 /* WalleetRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = DF02B623160B865600284343 /* WalleetRepository.m */; };
 /* End PBXBuildFile section */
 
@@ -81,6 +82,8 @@
 		454A67DA160B814700367F2B /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFXMLRequestOperation.m; path = AFNetworking/AFNetworking/AFXMLRequestOperation.m; sourceTree = SOURCE_ROOT; };
 		454A67DB160B814700367F2B /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImageView+AFNetworking.h"; path = "AFNetworking/AFNetworking/UIImageView+AFNetworking.h"; sourceTree = SOURCE_ROOT; };
 		454A67DC160B814700367F2B /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+AFNetworking.m"; path = "AFNetworking/AFNetworking/UIImageView+AFNetworking.m"; sourceTree = SOURCE_ROOT; };
+		454A67ED160B921000367F2B /* WalleetUserData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalleetUserData.h; sourceTree = "<group>"; };
+		454A67EE160B921000367F2B /* WalleetUserData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalleetUserData.m; sourceTree = "<group>"; };
 		DF02B622160B865600284343 /* WalleetRepository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WalleetRepository.h; path = Models/WalleetRepository.h; sourceTree = "<group>"; };
 		DF02B623160B865600284343 /* WalleetRepository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WalleetRepository.m; path = Models/WalleetRepository.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -231,6 +234,8 @@
 			children = (
 				DF02B622160B865600284343 /* WalleetRepository.h */,
 				DF02B623160B865600284343 /* WalleetRepository.m */,
+				454A67ED160B921000367F2B /* WalleetUserData.h */,
+				454A67EE160B921000367F2B /* WalleetUserData.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -355,6 +360,7 @@
 				454A67E4160B814700367F2B /* AFXMLRequestOperation.m in Sources */,
 				454A67E5160B814700367F2B /* UIImageView+AFNetworking.m in Sources */,
 				DF02B624160B865600284343 /* WalleetRepository.m in Sources */,
+				454A67EF160B921000367F2B /* WalleetUserData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
