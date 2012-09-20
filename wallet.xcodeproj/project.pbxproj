@@ -29,6 +29,7 @@
 		454A67E3160B814700367F2B /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 454A67D8160B814700367F2B /* AFURLConnectionOperation.m */; };
 		454A67E4160B814700367F2B /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 454A67DA160B814700367F2B /* AFXMLRequestOperation.m */; };
 		454A67E5160B814700367F2B /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 454A67DC160B814700367F2B /* UIImageView+AFNetworking.m */; };
+		DF02B624160B865600284343 /* WalleetRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = DF02B623160B865600284343 /* WalleetRepository.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +81,8 @@
 		454A67DA160B814700367F2B /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFXMLRequestOperation.m; path = AFNetworking/AFNetworking/AFXMLRequestOperation.m; sourceTree = SOURCE_ROOT; };
 		454A67DB160B814700367F2B /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImageView+AFNetworking.h"; path = "AFNetworking/AFNetworking/UIImageView+AFNetworking.h"; sourceTree = SOURCE_ROOT; };
 		454A67DC160B814700367F2B /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+AFNetworking.m"; path = "AFNetworking/AFNetworking/UIImageView+AFNetworking.m"; sourceTree = SOURCE_ROOT; };
+		DF02B622160B865600284343 /* WalleetRepository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WalleetRepository.h; path = Models/WalleetRepository.h; sourceTree = "<group>"; };
+		DF02B623160B865600284343 /* WalleetRepository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WalleetRepository.m; path = Models/WalleetRepository.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -226,6 +229,8 @@
 		454A67E8160B835500367F2B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				DF02B622160B865600284343 /* WalleetRepository.h */,
+				DF02B623160B865600284343 /* WalleetRepository.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -349,6 +354,7 @@
 				454A67E3160B814700367F2B /* AFURLConnectionOperation.m in Sources */,
 				454A67E4160B814700367F2B /* AFXMLRequestOperation.m in Sources */,
 				454A67E5160B814700367F2B /* UIImageView+AFNetworking.m in Sources */,
+				DF02B624160B865600284343 /* WalleetRepository.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -522,6 +528,7 @@
 				454A67C5160B808900367F2B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		454A67C6160B808900367F2B /* Build configuration list for PBXNativeTarget "walletTests" */ = {
 			isa = XCConfigurationList;
@@ -530,6 +537,7 @@
 				454A67C8160B808900367F2B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
