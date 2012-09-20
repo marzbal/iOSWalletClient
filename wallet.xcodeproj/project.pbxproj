@@ -33,6 +33,7 @@
 		454A67F3160BA1B500367F2B /* WaleetGroupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 454A67F2160BA1B500367F2B /* WaleetGroupTableViewController.m */; };
 		454A67F6160BA29200367F2B /* WalleetTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 454A67F5160BA29200367F2B /* WalleetTableView.m */; };
 		454A6801160BA87C00367F2B /* WalleetGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 454A6800160BA87C00367F2B /* WalleetGroup.m */; };
+		95656D77160BACD200A55E87 /* GroupDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95656D76160BACD100A55E87 /* GroupDetailTableViewController.m */; };
 		DF02B624160B865600284343 /* WalleetRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = DF02B623160B865600284343 /* WalleetRepository.m */; };
 /* End PBXBuildFile section */
 
@@ -93,6 +94,8 @@
 		454A67F5160BA29200367F2B /* WalleetTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WalleetTableView.m; path = Views/WalleetTableView.m; sourceTree = "<group>"; };
 		454A67FF160BA87C00367F2B /* WalleetGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WalleetGroup.h; path = Models/WalleetGroup.h; sourceTree = "<group>"; };
 		454A6800160BA87C00367F2B /* WalleetGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WalleetGroup.m; path = Models/WalleetGroup.m; sourceTree = "<group>"; };
+		95656D75160BACD100A55E87 /* GroupDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GroupDetailTableViewController.h; path = Controllers/GroupDetailTableViewController.h; sourceTree = "<group>"; };
+		95656D76160BACD100A55E87 /* GroupDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GroupDetailTableViewController.m; path = Controllers/GroupDetailTableViewController.m; sourceTree = "<group>"; };
 		DF02B622160B865600284343 /* WalleetRepository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WalleetRepository.h; path = Models/WalleetRepository.h; sourceTree = "<group>"; };
 		DF02B623160B865600284343 /* WalleetRepository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WalleetRepository.m; path = Models/WalleetRepository.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -238,6 +241,8 @@
 				454A67AA160B808900367F2B /* ViewController.m */,
 				454A67F1160BA1B500367F2B /* WaleetGroupTableViewController.h */,
 				454A67F2160BA1B500367F2B /* WaleetGroupTableViewController.m */,
+				95656D75160BACD100A55E87 /* GroupDetailTableViewController.h */,
+				95656D76160BACD100A55E87 /* GroupDetailTableViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -379,6 +384,7 @@
 				454A67F3160BA1B500367F2B /* WaleetGroupTableViewController.m in Sources */,
 				454A67F6160BA29200367F2B /* WalleetTableView.m in Sources */,
 				454A6801160BA87C00367F2B /* WalleetGroup.m in Sources */,
+				95656D77160BACD200A55E87 /* GroupDetailTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
