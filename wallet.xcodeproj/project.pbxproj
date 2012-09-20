@@ -141,9 +141,9 @@
 			children = (
 				454A67A3160B808900367F2B /* AppDelegate.h */,
 				454A67A4160B808900367F2B /* AppDelegate.m */,
-				454A67A6160B808900367F2B /* MainStoryboard.storyboard */,
-				454A67A9160B808900367F2B /* ViewController.h */,
-				454A67AA160B808900367F2B /* ViewController.m */,
+				454A67E8160B835500367F2B /* Models */,
+				454A67E7160B834700367F2B /* Controllers */,
+				454A67E6160B833A00367F2B /* Views */,
 				454A67C9160B813200367F2B /* AFNetworking */,
 				454A679B160B808900367F2B /* Supporting Files */,
 			);
@@ -204,6 +204,30 @@
 				454A67DC160B814700367F2B /* UIImageView+AFNetworking.m */,
 			);
 			name = AFNetworking;
+			sourceTree = "<group>";
+		};
+		454A67E6160B833A00367F2B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				454A67A6160B808900367F2B /* MainStoryboard.storyboard */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		454A67E7160B834700367F2B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				454A67AA160B808900367F2B /* ViewController.m */,
+				454A67A9160B808900367F2B /* ViewController.h */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		454A67E8160B835500367F2B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
