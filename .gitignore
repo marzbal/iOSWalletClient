@@ -1,0 +1,18 @@
+# pesky mac ds store file
+.DS_Store
+
+# xcode specific globals
+# source http://stackoverflow.com/questions/49478/git-ignore-file-for-xcode-projects
+*.swp
+*~.nib
+
+*.mode1v3
+*.mode2v3
+
+build/
+
+xcuserdata
+
+.xcodeproj/ 
+!*.xcodeproj/project.pbxproj
+!*.xcodeproj/xcshareddata/xcschemes/*.xcscheme
