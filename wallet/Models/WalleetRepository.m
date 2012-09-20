@@ -43,12 +43,17 @@
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
     NSMutableURLRequest *request = [httpClient requestWithMethod:@"POST" path:@"" parameters:nil];
     [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+
+    // prepare request body
+    NSMutableDictionary *personDictionary = [[NSMutableDictionary alloc] initWithCapacity:2];
+    [personDictionary setValue:email forKey:@"email"];
+    [personDictionary setValue:password forKey:@"password"];
+    NSMutableDictionary *requestBodyDictionary = [[NSMutableDictionary alloc] initWithCapacity:1];
+    [requestBodyDictionary setValue:personDictionary forKey:@"person"];
     
-    NSString *requestBody = @"{\"person\":{\"email\":\"aaa@example.com\", \"password\":\"test123\"}}";
-    [request setHTTPBody:[requestBody dataUsingEncoding:NSUTF8StringEncoding]];
-    
-    [WalleetUserData sharedInstance].userEmail = email;
-    [WalleetUserData sharedInstance].userPassword = password;
+    // "email\":\"aaa@example.com\", \"password\":\"test123\"}}";
+    NSData *requestBody = [NSJSONSerialization dataWithJSONObject:requestBodyDictionary options:NSJSONWritingPrettyPrinted error:nil];
+    [request setHTTPBody:requestBody];
     
     AFJSONRequestOperation *operation = [[AFJSONRequestOperation alloc] initWithRequest:request];
     
@@ -56,7 +61,10 @@
     {
         NSDictionary *dictionary = (NSDictionary *)responseObject;
         NSString *token = [dictionary objectForKey:@"api_token"];
-        
+    
+        // save user credentials
+        [WalleetUserData sharedInstance].userEmail = email;
+        [WalleetUserData sharedInstance].userPassword = password;
         [WalleetUserData sharedInstance].userToken = token;
         
         NSLog(@"Token:%@", token);
