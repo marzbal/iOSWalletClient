@@ -11,11 +11,13 @@
 #import "WalleetUserData.h"
 #import "WalleetGroup.h"
 
+#define WALEETT_DOMAIN @"http://sandbox.walleet.com/api/v1/"
+
 @implementation WalleetRepository
 
 - (void)createUserWithEmail:(NSString *)email andPassword:(NSString *)password;
 {
-    NSURL *url = [NSURL URLWithString:@"http://10.12.216.102:8888/api/v1/person.json"];
+    NSURL *url = [NSURL URLWithString:@"http://sandbox.walleet.com/api/v1/person.json"];
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
     NSMutableURLRequest *request = [httpClient requestWithMethod:@"POST" path:@"" parameters:nil];
     [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
@@ -52,7 +54,7 @@
 
 - (void)getUserForEmail:(NSString *)email andPassword:(NSString *)password successBlock:(void(^)(void))successBlock
 {
-    NSURL *url = [NSURL URLWithString:@"http://10.12.216.102:8888/api/v1/person/sign_in.json"];
+    NSURL *url = [NSURL URLWithString:@"http://sandbox.walleet.com/api/v1/person/sign_in.json"];
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
     NSMutableURLRequest *request = [httpClient requestWithMethod:@"POST" path:@"" parameters:nil];
     [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
@@ -91,7 +93,7 @@
 
 - (void)getUserAccount
 {
-    NSURL *url = [NSURL URLWithString:@"http://10.12.216.102:8888/api/v1/person.json"];
+    NSURL *url = [NSURL URLWithString:@"http://sandbox.walleet.com/api/v1/person.json"];
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
     NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET" path:@"" parameters:nil];
     [request addValue:[WalleetUserData sharedInstance].userToken forHTTPHeaderField:@"X-Api-Token"];
@@ -114,7 +116,7 @@
 
 - (void)getGroupsWithSuccessBlock:(GroupsSuccessBlock)successBlock
 {
-    NSURL *url = [NSURL URLWithString:@"http://10.12.216.102:8888/api/v1/groups.json"];
+    NSURL *url = [NSURL URLWithString:@"http://sandbox.walleet.com/api/v1/groups.json"];
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
     NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET" path:@"" parameters:nil];
     [request addValue:[WalleetUserData sharedInstance].userToken forHTTPHeaderField:@"X-Api-Token"];
